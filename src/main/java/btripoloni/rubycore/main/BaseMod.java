@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import org.jruby.embed.LocalVariableBehavior;
 import org.jruby.embed.PathType;
 import org.jruby.embed.ScriptingContainer;
+
 
 
 
@@ -67,6 +69,8 @@ public class BaseMod {
     public void init(FMLInitializationEvent event)
     {
     	container.callMethod(core, "init");
+    	Item n = new Item();
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(n, 0, new ModelResourceLocation("", "inventory"));
     }
 
     @EventHandler
@@ -75,6 +79,10 @@ public class BaseMod {
     	//container.callMethod(core, "pre_init");
 
 	    try {
+	    	// Load the proxies for the assets
+	    	proxy.reloadResourceListener();
+	    	proxy.renderAssetsInDevelopment();
+	    	
 	    	//container.
 	    	container.setClassLoader(BaseMod.class.getClassLoader());
 	    	URL url = getClass().getResource("/loader.rb");
@@ -83,10 +91,6 @@ public class BaseMod {
 	    	Object brainClass = container.runScriptlet(url.openStream(), unescapedurl);
 	    	core = container.callMethod(brainClass, "new");
 	    	container.callMethod(core, "pre_init");
-
-	    	// Load the proxies for the assets
-	    	proxy.reloadResourceListener();
-	    	proxy.renderAssetsInDevelopment();
 	    } catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,6 +98,7 @@ public class BaseMod {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
     }
 
     /*@EventHandler

@@ -5,6 +5,7 @@ java_import 'btripoloni.rubycore.api.RubyCoreApi'
 # Minecraft imports
 
 java_import 'net.minecraft.client.Minecraft'
+java_import 'net.minecraft.client.resources.model.ModelResourceLocation'
 java_import 'net.minecraft.block.Block'
 java_import 'net.minecraft.block.material.Material'
 java_import 'net.minecraft.creativetab.CreativeTabs'
