@@ -3,7 +3,6 @@
 			# Melhorar a desconpactação dos mods
 			# *Consertar o bug de loads
 			# Avisar que gems estão sendo instaladas
-            # resouver quando não é declarado o mod de maneira correta
 
 $mods = []
 require 'java'
@@ -101,6 +100,12 @@ module RubyCore
 				@mods << mod.new
 			end
 		end
+		
+		def call_method(name)
+			@mods.each_with_index do |mod, index|
+				mod.send(name.to_s) if $mods[index].method_defined? name
+			end
+		end
 
 		def init
 			call_method(:init)
@@ -114,11 +119,6 @@ module RubyCore
 			call_method(:post_init)
 		end
 
-		def call_method(name)
-			@mods.each_with_index do |mod, index|
-				mod.send(name.to_s) if $mods[index].method_defined? name
-			end
-		end
 	end
 end
 
