@@ -69,30 +69,7 @@ module RubyCore
 		end
 
 		def unpack_mods
-			Dir[@mods_folder].each do |mod|
-				mod_name = File.basename(mod, ".*")
-				mod_folder = File.join(@cache_folder, mod_name)
-				unless Dir.exist?(mod_folder)
-					Dir.mkdir(mod_folder)
-					Zip::File.open(mod) do |zip_file|
-					  zip_file.each do |entry|
-					  	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
-					    directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
-					    Dir.mkdir(directory) unless Dir.exist?(directory) if entry.directory?
-					  end
-
-					  zip_file.each do |entry|
-					    if entry.file?
-					    	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
-					    	directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
-					    	content = entry.get_input_stream.read
-					    	file = File.new(directory, "w+")
-					    	file.write(content)
-					    end
-					  end
-					end
-				end
-			end
+			
 		end
 
 		def initialize_mods
