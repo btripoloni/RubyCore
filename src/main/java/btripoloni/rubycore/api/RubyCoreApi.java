@@ -8,6 +8,7 @@ import java.util.HashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,6 +26,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class RubyCoreApi {
+	
+	public static Item[] item = new Item[10];
+	
 	public static File minecraft_home(){
 		return Minecraft.getMinecraft().mcDataDir;
 	}
@@ -44,5 +48,9 @@ public class RubyCoreApi {
 	public static Class<?> get_class(String name) throws ClassNotFoundException{
 		Class<?> cls = Class.forName(name);
 		return cls;
+	}
+	
+	public static void registerBlock(Block item){
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(item), 0, new ModelResourceLocation("rubycore:"+item.getUnlocalizedName().substring(5), "inventory"));
 	}
 }

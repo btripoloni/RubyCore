@@ -28,13 +28,12 @@ module RubyCore
 			file = File.new(File.join(class_path, "#{name_of_class.downcase}.rb"), "w+")
 			file.write("class #{name_of_class}\n")
 			name_methods.each_with_index do |name, index|
-				parameters = ""
+				parameters = []
 				parameters_size[index].times do |params|
 					parameters << "arg#{params}"
-					parameters << ", " unless params == (parameters_size[index] - 1)
 				end
-				file.write("  def self.#{name}(#{parameters})\n")
-				file.write("    #{obfuscated_methods[index]}(#{parameters})\n")
+				file.write("  def self.#{name}(#{parameters.to_csv.chomp})\n")
+				file.write("    #{obfuscated_methods[index]}(#{parameters.to_csv.chomp})\n")
 				file.write("  end\n")
 			end
 			file.write("end")

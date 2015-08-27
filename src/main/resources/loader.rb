@@ -38,11 +38,13 @@ module RubyCore
 			@gems_folder = @path.gems_folder()
 			@cache_folder = @path.cache_folder()
 			@development_folder = @path.development_folder()
+			@mods = []
 
 			RubyCore::Gems::process_gems([{rubygem: "rubyzip", as: "zip"}])
-			create_base()
-			unpack_mods()
-			load_mods()
+			create_base
+			unpack_mods
+			load_mods
+			initialize_mods
 		end
 
 		def create_base
@@ -94,31 +96,27 @@ module RubyCore
 			end
 		end
 
-		def init
+		def initialize_mods
 			$mods.each do |mod|
-				m = mod.new
-				m.init if mod.method_defined? :init
+				@mods << mod.new
 			end
+		end
+
+		def init
+			call_method(:init)
 		end
 
 		def pre_init
-			$mods.each do |mod|
-				m = mod.new
-				m.pre_init if mod.method_defined? :pre_init
-			end
+			call_method(:pre_init)
 		end
 
 		def post_init
-			$mods.each do |mod|
-				m = mod.new
-				m.post_init if mod.method_defined? :post_init
-			end
+			call_method(:post_init)
 		end
 
-		def on_load
-			$mods.each do |mod|
-				m = mod.new
-				m.on_load if mod.method_defined? :on_load
+		def call_method(name)
+			@mods.each_with_index do |mod, index|
+				mod.send(name.to_s) if $mods[index].method_defined? name
 			end
 		end
 	end

@@ -11,10 +11,10 @@ import net.minecraft.client.resources.SimpleReloadableResourceManager;
 public class RubyCoreResourceListenerInDevelopment implements IResourceManagerReloadListener{
 	@Override
     public void onResourceManagerReload(IResourceManager var1) {
-    	if(var1 instanceof SimpleReloadableResourceManager){                   
+    	if(var1 instanceof SimpleReloadableResourceManager){
     		SimpleReloadableResourceManager simplemanager = (SimpleReloadableResourceManager)var1; 
     		File mods_path = new File(Minecraft.getMinecraft().mcDataDir,"rubymods");
-    		FolderResourcePack pack = new FolderResourcePack(new File(mods_path, "Development"));
+    		FolderResourcePack pack = new FolderResourcePack(new File(mods_path, "development"));
     		simplemanager.reloadResourcePack(pack);
         }
     }

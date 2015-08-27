@@ -12,4 +12,9 @@ public class CommonProxy {
 	public void renderAssetsInDevelopment(){
 		((SimpleReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(new RubyCoreResourceListenerInDevelopment());
 	}
+
+	public void renderItems(Object core) {
+		// TODO Auto-generated method stub
+		
+	}
 }

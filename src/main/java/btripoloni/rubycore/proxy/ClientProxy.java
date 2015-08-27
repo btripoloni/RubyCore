@@ -1,9 +1,11 @@
 package btripoloni.rubycore.proxy;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IReloadableResourceManager;
+import org.jruby.embed.ScriptingContainer;
+
 
 public class ClientProxy extends CommonProxy{
+
+	ScriptingContainer container = new ScriptingContainer();
 	
 	@Override
 	public void reloadResourceListener(){

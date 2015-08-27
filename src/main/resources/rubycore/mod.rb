@@ -15,6 +15,12 @@ module RubyCore
 			
 			GameRegistry.addRecipe(stack, java_recipe.to_java)
 		end
+		
+		def render_model(item, name)
+			item = Item.getItemFromBlock(item) if item.class.to_s == "Java::Default::Block"
+			model = Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+			model.register(item, 0, ModelResourceLocation.new("rubycore:#{name}", "inventory"))
+		end
 	end
 
 end

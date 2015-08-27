@@ -1,12 +1,32 @@
 class QuickBlock < Block
 	def initalize(material)
 		super(material)
+		@name = "QuickBlock"
+	end
+
+	def getName
+		@name
+	end
+
+	def name=(name)
+		@name = name
 	end
 end
 
 class QuickItem < Item
 	def initialize
-		super
+		#super(name)
+		@name = "QuickItem"
+		#@name = name unless name
+		#GameRegistry.registerItem(self, @name)
+	end
+
+	def getName
+		@name
+	end
+
+	def name=(name)
+		@name = name
 	end
 end
 
