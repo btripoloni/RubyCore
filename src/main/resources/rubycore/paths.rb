@@ -2,12 +2,18 @@ module RubyCore
 	class Paths
 		def minecraft_folder
 			RubyCoreApi.minecraft_home.to_s
-      #CoreMinecraft.getMinecraft().mcDataDir.to_s
-      #              getMinecraft().mcDataDir
 		end
 
 		def mods_folder
 			File.join(minecraft_folder, 'mods' , 'rubymods', '*.zip')
+		end
+
+		def forge_mods_folder
+			File.join(minecraft_folder, 'mods')
+		end
+
+		def cache_assets
+			File.join(cache_folder, "cache_assets")
 		end
 
 		def rubycore_folder
