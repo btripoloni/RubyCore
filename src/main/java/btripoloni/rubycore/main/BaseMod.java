@@ -6,17 +6,17 @@ import java.net.URL;
 import java.net.URLDecoder;
 
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import org.jruby.embed.ScriptingContainer;
 
 import btripoloni.rubycore.proxy.ClientProxy;
 import btripoloni.rubycore.proxy.CommonProxy;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 //inform to Forge than this class is a mod
 @Mod(name = BaseMod.NAME, modid = BaseMod.MODID, version = BaseMod.VERSION)
@@ -51,9 +51,6 @@ public class BaseMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
-    	//core = container.runScriptlet(PathType.CLASSPATH, "btripoloni/rubycore/ruby/loader.rb");
-    	//container.callMethod(core, "pre_init");
-
 	    try {
 	    	// Load the proxies for the assets
 	    	proxy.reloadResourceListener();
@@ -77,12 +74,4 @@ public class BaseMod {
 		}
 	    
     }
-
-    /*@EventHandler
-    public void preInit(FMLPreInitializationEvent event){
-    	core = container.runScriptlet(PathType.CLASSPATH, "btripoloni/rubycore/ruby/loader.rb");
-    	container.callMethod(core, "pre_init");
-    	proxy.reloadResourceListener();
-    	proxy.renderAssetsInDevelopment();
-    }*/
 }

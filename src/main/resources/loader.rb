@@ -41,10 +41,9 @@ module RubyCore
 			@development_folder = @path.development_folder()
 			@mods = []
 
-			RubyCore::Gems::process_gems([{rubygem: "rubyzip", as: "zip"}])
 			create_base
-			u = RubyCore::UnpackMods.new
-			u.unpack
+			RubyCore::Gems::process_gems([{rubygem: "rubyzip", as: "zip"}])
+			unpack_mods
 			load_mods
 			initialize_mods
 		end
@@ -58,6 +57,33 @@ module RubyCore
 			@path.assets_folder_create!
 			@path.gems_folder_create!
 			@path.cache_assets_create!
+		end
+
+		def unpack_mods
+			Dir[@mods_folder].each do |mod|
+				mod_name = File.basename(mod, ".*")
+				mod_folder = File.join(@cache_folder, mod_name)
+				unless Dir.exist?(mod_folder)
+					Dir.mkdir(mod_folder)
+					Zip::File.open(mod) do |zip_file|
+					  zip_file.each do |entry|
+					  	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
+					    directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
+					    Dir.mkdir(directory) unless Dir.exist?(directory) if entry.directory?
+					  end
+
+					  zip_file.each do |entry|
+					    if entry.file?
+					    	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
+					    	directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
+					    	content = entry.get_input_stream.read
+					    	file = File.new(directory, "w+")
+					    	file.write(content)
+					    end
+					  end
+					end
+				end
+			end
 		end
 
 		def load_mods

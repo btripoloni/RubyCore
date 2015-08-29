@@ -5,7 +5,6 @@ java_import 'btripoloni.rubycore.api.RubyCoreApi'
 # Minecraft imports
 
 java_import 'net.minecraft.client.Minecraft'
-java_import 'net.minecraft.client.resources.model.ModelResourceLocation'
 java_import 'net.minecraft.block.Block'
 java_import 'net.minecraft.block.material.Material'
 java_import 'net.minecraft.creativetab.CreativeTabs'
@@ -20,5 +19,5 @@ java_import 'net.minecraft.world.gen.feature.WorldGenMinable'
 java_import 'net.minecraft.entity.monster.EntityMob'
 
 # Forge imports
-java_import 'net.minecraftforge.fml.common.registry.GameRegistry'
-java_import 'net.minecraftforge.fml.common.IWorldGenerator'
+java_import 'cpw.mods.fml.common.registry.GameRegistry'
+java_import 'cpw.mods.fml.common.IWorldGenerator'
