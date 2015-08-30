@@ -19,18 +19,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 //inform to Forge than this class is a mod
-@Mod(name = BaseMod.NAME, modid = BaseMod.MODID, version = BaseMod.VERSION)
+@Mod(name = Info.name, modid = Info.modid, version = Info.version)
 public class BaseMod {
     //call the Resource Proxies
 	@SidedProxy(clientSide = "btripoloni.rubycore.proxy.ClientProxy", serverSide = "btripoloni.rubycore.proxy.CommonProxy")
 	public static CommonProxy proxy;
     public static ClientProxy cproxy;
-
-    //Mod info
-	public static final String NAME = "Ruby Core";
-	public static final String MODID = "rubycore";
-    public static final String VERSION = "0.1";
-
 
     @Mod.Instance("rubycore")
     public static BaseMod instance;
