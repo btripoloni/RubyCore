@@ -53,8 +53,8 @@ public class BaseMod {
     public void preInit(FMLPreInitializationEvent event){
 	    try {
 	    	// Load the proxies for the assets
-	    	proxy.reloadResourceListener();
-	    	proxy.renderAssetsInDevelopment();
+	    	//proxy.reloadResourceListener();
+	    	//proxy.renderAssetsInDevelopment();
 	    	
 	    	
 	    	//container.

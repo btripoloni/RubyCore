@@ -5,7 +5,6 @@
 			# Avisar que gems estão sendo instaladas
 
 $mods = []
-$debug = false
 require 'java'
 require_relative 'forge'
 
@@ -20,7 +19,7 @@ require_relative 'rubycore/quickclasses'
 require_relative 'rubycore/utilities'
 require_relative 'rubycore/tools'
 require_relative 'rubycore/messages'
-require_relative 'rubycore/unpack_mods'
+
 
 def add_mod(mod = nil, name = nil, version = nil)
 	if mod && name && version
@@ -41,9 +40,8 @@ module RubyCore
 			@development_folder = @path.development_folder()
 			@mods = []
 
-			create_base
 			RubyCore::Gems::process_gems([{rubygem: "rubyzip", as: "zip"}])
-			unpack_mods
+			create_base
 			load_mods
 			initialize_mods
 		end
@@ -54,47 +52,12 @@ module RubyCore
 			@path.rubycore_mods_create!
 			@path.cache_folder_create!
 			@path.development_folder_create!
-			@path.assets_folder_create!
 			@path.gems_folder_create!
-			@path.cache_assets_create!
-		end
-
-		def unpack_mods
-			Dir[@mods_folder].each do |mod|
-				mod_name = File.basename(mod, ".*")
-				mod_folder = File.join(@cache_folder, mod_name)
-				unless Dir.exist?(mod_folder)
-					Dir.mkdir(mod_folder)
-					Zip::File.open(mod) do |zip_file|
-					  zip_file.each do |entry|
-					  	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
-					    directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
-					    Dir.mkdir(directory) unless Dir.exist?(directory) if entry.directory?
-					  end
-
-					  zip_file.each do |entry|
-					    if entry.file?
-					    	directory = File.join(@cache_folder, mod_name, entry.name)# Duplicate
-					    	directory = File.join(@cache_folder, entry.name) if /assets\/(.*)/.match(entry.name)
-					    	content = entry.get_input_stream.read
-					    	file = File.new(directory, "w+")
-					    	file.write(content)
-					    end
-					  end
-					end
-				end
-			end
 		end
 
 		def load_mods
-			Dir[@cachied_mods_folder].each do |f|
-				puts RubyCore::Message.send_message(:load, f)
-				load f
-			end
-
-			Dir[@development_folder].each do |f|
-				puts RubyCore::Message.send_message(:load, f, true)
-				load f
+			Dir[File.join(File.dirname(__FILE__), 'mod', 'mod_*.rb')].each do |m|
+				load m
 			end
 		end
 
