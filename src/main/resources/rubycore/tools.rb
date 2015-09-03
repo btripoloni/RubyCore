@@ -34,7 +34,7 @@ module RubyCore
 				end
 				file.write("  def self.#{name}(#{parameters.to_csv.chomp})\n")
 				file.write("    #{obfuscated_methods[index]}(#{parameters.to_csv.chomp})\n")
-				file.write("  end\n")
+				file.write("  end\n\n")
 			end
 			file.write("end")
 			file.close
