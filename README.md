@@ -7,21 +7,21 @@
 ####**FAQ**
 
 **What the mods i can create?**
-Anyone you can acess all Java, Minecraft, Forge Api using ruby, so feel free to create!
+You can access all Java, Minecraft, Forge Api using ruby, so, feel free to create!
 
 **Can I use gems?**
-Sure, but the gems need to be all in Ruby, native gems(C language) don’t work because the framework has writed in Ruby/Java.
+Sure, but the gems need to be all in Ruby, native gems(C language) don’t work because the framework has written in Ruby/Java.
 
-**Can I create gems for outhers moders?**
+**Can I create gems for others moders?**
 Yes, please.
 
 **Can i use other dev mods(BuildCraft, IndustrialCraft, etc)**
-	I don’t know :D, but i belive than yes.
+	I don't know :D, but i believe than yes.
 
 **Why Ruby?**
 	Ruby is a awesome language is made for humans not for machines, is easy to learn and write code, you can create everything with ruby, desktop and mobile apps, web servers, etc, so why not we can create mods for Minecraft?
 
-**So don’t be lazy, so download the RubyCore and:**
+**So, don't be lazy, so, download the RubyCore and:**
 ![just do it](http://i.ytimg.com/vi/loYr1_A5qU4/maxresdefault.jpg)
 ---
 
