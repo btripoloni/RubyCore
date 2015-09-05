@@ -2,7 +2,11 @@ require 'csv'
 
 module RubyCore
 	#Deprecated
-	class Tools	
+	class Tools
+		def self.production?
+			Java::net::minecraft::block::Block.method_defined? :func_149688_o
+		end
+
 		#melhorar
 		def self.get_name_of_class(name)
 			name.split('.').last

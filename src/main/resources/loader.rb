@@ -20,6 +20,15 @@ require_relative 'rubycore/utilities'
 require_relative 'rubycore/tools'
 require_relative 'rubycore/messages'
 
+if RubyCore::Tools.production?
+	require 'production/block'
+	require 'production/blocks'
+	require 'production/creativetabs'
+	require 'production/item'
+	require 'production/items'
+	require 'production/material'
+end
+
 
 def add_mod(mod = nil, name = nil, version = nil)
 	if mod && name && version
