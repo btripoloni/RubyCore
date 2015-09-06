@@ -73,19 +73,6 @@ class TutorialMod #create a class
 end
 ```
 
-####You can render models too:
-
-```ruby
-class TutorialMod #create a class
-  def pre_init #like a nomal forge mod
-    @block = QuickBlock.new(:wood) # You can use a symbol to inform a Material
-    @block.setUnlocalizedName("tutorial_block")# normal
-    @block.setCreativeTab(:blocks)# You can use symbols to inform tabs too
-    GameRegistry.registerBlock(@block, "tutorial_block")
-  end
-end
-```
-
 ####Create Items:
 
 ```ruby
@@ -102,3 +89,39 @@ GameRegistry.registerItem(@item, "tutorial_item")
 @block.setCreativeTab(@tutorial_tab)
 @item.setCreativeTab(@tutorial_tab)
 ```
+---
+
+##Creating a jar for your mod:
+Open the file ```src/main/java/btripoloni/rubycore/main/info.java``` and ```build.gradle```and modify with info of your mods, run the command ```gradlew build```
+
+Your jar will be in the folder ```build/libs```
+
+---
+##Contributing:
+>- Fork
+>- Create a branch
+>- Send a pull request
+
+---
+##License
+The MIT License (MIT)
+
+Copyright (c) 2015 Bruno Tripoloni
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
