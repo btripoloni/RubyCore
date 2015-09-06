@@ -3,7 +3,7 @@ package btripoloni.rubycore.main;
 import java.util.Random;
 
 import net.minecraft.entity.EntityList;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 
 public class EntityHandler {
