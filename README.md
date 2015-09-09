@@ -30,8 +30,6 @@ Yes.
 
 Ruby is a awesome language is made for humans not for machines, is easy to learn and write code, you can create everything with ruby, desktop and mobile apps, web servers, etc, so why not we can create mods for Minecraft?
 
-**So, don't be lazy, so, download the RubyCore and:**
-![just do it](http://i.ytimg.com/vi/loYr1_A5qU4/maxresdefault.jpg)
 ---
 
 #Geting started:
