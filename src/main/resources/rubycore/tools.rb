@@ -36,7 +36,7 @@ module RubyCore
 				parameters_size[index].times do |params|
 					parameters << "arg#{params}"
 				end
-				file.write("  def self.#{name}(#{parameters.to_csv.chomp})\n")
+				file.write("  def #{name}(#{parameters.to_csv.chomp})\n")
 				file.write("    #{obfuscated_methods[index]}(#{parameters.to_csv.chomp})\n")
 				file.write("  end\n\n")
 			end

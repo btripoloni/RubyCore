@@ -1,9 +1,3 @@
-# TODO:
-			# Criar um botão para mostrar os mods carregados,
-			# Melhorar a desconpactação dos mods
-			# *Consertar o bug de loads
-			# Avisar que gems estão sendo instaladas
-
 $mods = []
 require 'java'
 require_relative 'forge'
@@ -21,12 +15,12 @@ require_relative 'rubycore/tools'
 require_relative 'rubycore/messages'
 
 if RubyCore::Tools.production?
-	require 'production/block'
-	require 'production/blocks'
-	require 'production/creativetabs'
-	require 'production/item'
-	require 'production/items'
-	require 'production/material'
+	require_relative 'production/block'
+	require_relative 'production/blocks'
+	require_relative 'production/creativetabs'
+	require_relative 'production/item'
+	require_relative 'production/items'
+	require_relative 'production/material'
 end
 
 
