@@ -105,6 +105,8 @@ Open the file ```src/main/java/btripoloni/rubycore/main/info.java``` and ```buil
 
 Your jar will be in the folder ```build/libs```
 
+'jruby-complete.jar' is a dependencie of your mod so the users need to download then too.
+
 ---
 ##Contributing:
 >- Fork
