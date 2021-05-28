@@ -1,10 +1,16 @@
-#RubyCore
 
-###RubyCore is a easy way to create mods for minecraft using ruby.
+## This project is unmantained now due to I have no time to spend on this project
+look here for new versions of this project https://github.com/nicholasrobertm/RubyCore
 
 ---
 
-####**FAQ**
+# RubyCore
+
+### RubyCore is a easy way to create mods for minecraft using ruby.
+
+---
+
+#### **FAQ**
 
 **What the mods i can create?**
 
@@ -32,7 +38,7 @@ Ruby is a awesome language is made for humans not for machines, is easy to learn
 
 ---
 
-#Geting started:
+# Geting started:
 
 Develop a mod using RubyCore is very similar with a normal forge mod.
 
@@ -52,7 +58,7 @@ You code will be in the “src/main/resources/mod” folder (ruby only)
 the main file of your mod need to contain the prefix “mod_”, ex: mod_newSword.rb
 
 ---
-##Create a mod using RubyCore is easy:
+## Create a mod using RubyCore is easy:
 
 ```ruby
 class TutorialMod #create a class
@@ -67,7 +73,7 @@ end
 add_mod(TutorialMod, "Tutorial Mod", "0.1") # tells to rubycore that your mod exists
 ```
 
-####This code will make a simple block, but this can be better:
+#### This code will make a simple block, but this can be better:
 
 ```ruby
 class TutorialMod #create a class
@@ -80,7 +86,7 @@ class TutorialMod #create a class
 end
 ```
 
-####Create Items:
+#### Create Items:
 
 ```ruby
 @item = QuickItem.new() #create a new item
@@ -89,7 +95,7 @@ end
 GameRegistry.registerItem(@item, "tutorial_item")
 ```
 
-####Create tabs:
+#### Create tabs:
 
 ```ruby
 @tutorial_tab = QuickTab("Tutorial", @item)
@@ -98,7 +104,7 @@ GameRegistry.registerItem(@item, "tutorial_item")
 ```
 ---
 
-##Creating a jar for your mod:
+## Creating a jar for your mod:
 Open the file ```src/main/java/btripoloni/rubycore/main/info.java``` and ```build.gradle```and modify with info of your mods, run the command ```gradlew build```
 
 Your jar will be in the folder ```build/libs```
@@ -106,13 +112,13 @@ Your jar will be in the folder ```build/libs```
 'jruby-complete.jar' is a dependencie of your mod so the users need to download then too.
 
 ---
-##Contributing:
+## Contributing:
 >- Fork
 >- Create a branch
 >- Send a pull request
 
 ---
-##License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2015 Bruno Tripoloni
