@@ -1,5 +1,5 @@
 
-## This project is unmantained now due to I have no time to spend on this project
+## This project is unmaintained now due to I have no time to spend on this project
 look here for new versions of this project https://github.com/nicholasrobertm/RubyCore
 
 ---
